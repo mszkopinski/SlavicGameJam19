@@ -32,7 +32,7 @@ namespace SGJ
 			var movementVector = Vector3.one;
 			movementVector.x = horizontal * Stats.MovementSpeed;
 			movementVector.z = vertical * Stats.MovementSpeed;
-			rb.MovePosition(transform.position + movementVector * Time.deltaTime); 
+			rb.AddForce(movementVector * Time.deltaTime);
 		}
 	}
 }
