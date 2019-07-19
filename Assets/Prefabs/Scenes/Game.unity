@@ -307,9 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fcda8a86c54460b5675be3e30707d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: 0, y: 19, z: 0}
-  smoothSpeed: 0.9
-  initialTarget: {fileID: 6120130915591540607}
+  smoothSpeed: 0.2
+  screenEdgeSafeOffset: 5
+  minCameraYPos: 8
 --- !u!1001 &1052377848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -618,9 +618,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab16bea1a75c1cc4ea31b87d27ad7825, type: 3}
---- !u!4 &6120130915591540607 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6120130915591540607, guid: ab16bea1a75c1cc4ea31b87d27ad7825,
-    type: 3}
-  m_PrefabInstance: {fileID: 1220132241161926844}
-  m_PrefabAsset: {fileID: 0}
