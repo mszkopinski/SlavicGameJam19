@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGJ
 {
-	public class CameraController : MonoBehaviour
+	public class CameraController : MonoSingleton<CameraController>
 	{
 		public Camera ActiveCamera { get; private set; } 
 		

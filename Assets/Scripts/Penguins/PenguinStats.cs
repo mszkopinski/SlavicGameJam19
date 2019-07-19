@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SGJ
@@ -6,9 +7,17 @@ namespace SGJ
 	[Serializable]
 	public class PenguinStats
 	{
-		public float MovementSpeed => movementSpeed;
-		
 		[SerializeField]
-		float movementSpeed;
+		public float movementSpeed;
+
+		[SerializeField]
+		public List<FatMeasure> fatMeasures;
+	}
+
+	[Serializable]
+	public class FatMeasure
+	{
+		public int Level;
+		public float MaxFatValue;
 	}
 }
