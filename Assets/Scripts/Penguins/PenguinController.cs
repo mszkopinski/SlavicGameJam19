@@ -69,6 +69,8 @@ namespace SGJ
 			{
 				if(value == currentFatMeasure) return;
 				currentFatMeasure = value;
+				rb.mass = currentFatMeasure.Mass;
+				Stats.movementSpeed -= Stats.movementSpeed * currentFatMeasure.DecelerationPercentage;
 				OnFatMeasureChanged(currentFatMeasure);
 			}
 		}

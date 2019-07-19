@@ -19,5 +19,7 @@ namespace SGJ
 	{
 		public int Level;
 		public float MaxFatValue;
+		public float Mass = 20f;
+		public float DecelerationPercentage = 0.1f;
 	}
 }

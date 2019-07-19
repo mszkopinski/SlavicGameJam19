@@ -11,6 +11,7 @@ namespace SGJ
 		[SerializeField] float smoothSpeed = 0.0001f;
 		[SerializeField] float screenEdgeSafeOffset = 4f;
 		[SerializeField] float minCameraYPos = 8f;
+		[SerializeField] Vector3 offset = Vector3.zero;
 
 		Vector3 refVelocity = Vector3.zero;
 		float currentVelocity;
@@ -31,6 +32,7 @@ namespace SGJ
 				return;
 			
 			var targetPos = FindAveragePosition();
+			targetPos += offset;
 			transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref refVelocity, smoothSpeed);
 			CalculateZoom(targetPos);
 		}
