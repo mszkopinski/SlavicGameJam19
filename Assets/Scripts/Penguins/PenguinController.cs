@@ -91,7 +91,7 @@ namespace SGJ
 			CurrentFatValue = 0f;
 		}
 	
-		void Update()
+		/*void Update()
 		{
 			HandleMovement();
 		}
@@ -107,6 +107,14 @@ namespace SGJ
 			var movementVector = Vector3.one;
 			movementVector.x = horizontal * Stats.movementSpeed;
 			movementVector.z = vertical * Stats.movementSpeed;
+			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
+		}*/
+
+		public void HandleRewiredMovement(Vector2 input)
+		{
+			var movementVector = Vector3.one;
+			movementVector.x = input.x * Stats.movementSpeed;
+			movementVector.z = input.y * Stats.movementSpeed;
 			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
 		}
 

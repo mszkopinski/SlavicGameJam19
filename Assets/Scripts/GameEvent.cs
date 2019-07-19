@@ -25,8 +25,6 @@ namespace SGJ19
         {
             listeners.Remove(listener);
         }
-
-
     }
 }
 

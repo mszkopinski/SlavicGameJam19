@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5599628428929038527}
   - component: {fileID: 3713461775233299265}
   - component: {fileID: 7577703745145469207}
+  - component: {fileID: 1990892776744985366}
   m_Layer: 0
   m_Name: Penguin_Prefab
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7577703745145469206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.240826, y: -0.1355944, z: 2.3549805}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,8 +128,75 @@ MonoBehaviour:
     fatMeasures:
     - Level: 1
       MaxFatValue: 20
+      Mass: 20
+      DecelerationPercentage: 0.1
     - Level: 2
       MaxFatValue: 50
+      Mass: 20
+      DecelerationPercentage: 0.1
     - Level: 3
       MaxFatValue: 60
+      Mass: 20
+      DecelerationPercentage: 0.1
   isEditorControllable: 1
+--- !u!114 &1990892776744985366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577703745145469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246acc436c0a846be87535c8262ad0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  Movement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7577703745145469207}
+        m_MethodName: HandleRewiredMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ19.MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  Shoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7577703745145469207}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Fire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7577703745145469207}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

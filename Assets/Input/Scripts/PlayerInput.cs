@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using Rewired;
 using UnityEngine.Events;
 
-namespace ShadowOfTheRoad
+namespace SGJ19
 {
     [System.Serializable]
     public class MovementEvent : UnityEvent<Vector2>
@@ -21,12 +22,16 @@ namespace ShadowOfTheRoad
         
         private Player player; 
         private Vector3 movementVector;
-        
-        void Awake()
+
+        public int PlayerId
         {
-            player = ReInput.players.GetPlayer(playerId);
-            player.AddInputEventDelegate(OnFireButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Fire");
-            player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slide");
+            set
+            {
+                playerId = value;
+                player = ReInput.players.GetPlayer(playerId);
+                player.AddInputEventDelegate(OnFireButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Fire");
+                player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slide");
+            }
         }
 
         void Update()
@@ -38,12 +43,12 @@ namespace ShadowOfTheRoad
         private void GetInput()
         {
             movementVector.x = player.GetAxis("Move Horizontal");
-            movementVector.z = player.GetAxis("Move Vertical");
+            movementVector.y = player.GetAxis("Move Vertical");
         }
         
         private void ProcessMovementInput()
         {
-            if (movementVector.x != 0 || movementVector.z != 0)
+            if (movementVector.x != 0 || movementVector.y != 0)
             {
                 Movement.Invoke(movementVector);
             }
@@ -58,6 +63,12 @@ namespace ShadowOfTheRoad
         private void OnSlideButtonDown(InputActionEventData data)
         {
             Fire.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            player.RemoveInputEventDelegate(OnFireButtonDown);
+            player.RemoveInputEventDelegate(OnSlideButtonDown);
         }
     }
 }
