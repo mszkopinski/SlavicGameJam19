@@ -8,49 +8,78 @@ namespace SGJ
 	{
 		public Camera ActiveCamera { get; private set; } 
 		
-		[SerializeField] Vector3 cameraOffset;
 		[SerializeField] float smoothSpeed = 0.0001f;
-		[SerializeField] Transform initialTarget;
+		[SerializeField] float screenEdgeSafeOffset = 4f;
+		[SerializeField] float minCameraYPos = 8f;
 
 		Vector3 refVelocity = Vector3.zero;
-		float heightToAdd = 0f;
+		float currentVelocity;
 		
-		readonly List<PenguinController> spawnedPenguins = new List<PenguinController>();
+		readonly List<Transform> objectsToTrack = new List<Transform>();
         
 		void Awake()
 		{    
 			ActiveCamera = GetComponent<Camera>();
-			spawnedPenguins.AddRange(FindObjectsOfType<PenguinController>());
+			objectsToTrack.AddRange(
+				FindObjectsOfType<PenguinController>()
+				.Select(obj => obj.transform));
 		}
 
 		void LateUpdate()
 		{
-			if(spawnedPenguins.Count == 0)
+			if(objectsToTrack.Count == 0)
 				return;
 			
-			bool allPenguinsVisible = spawnedPenguins.All(p => p.transform.IsVisibleToCam(ActiveCamera));
-			heightToAdd = !allPenguinsVisible ? 5f : - 5f;
-
-			var targetPos = GetPenguinPositionsCenter() + cameraOffset;
-			targetPos.y += heightToAdd;
-			var newPosition = Vector3.SmoothDamp(
-				ActiveCamera.transform.position,
-				targetPos,
-				ref refVelocity,
-				smoothSpeed);
-			ActiveCamera.transform.position = newPosition;
+			var targetPos = FindAveragePosition();
+			transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref refVelocity, smoothSpeed);
+			CalculateZoom(targetPos);
 		}
 
-		Vector3 GetPenguinPositionsCenter()
+		Vector3 FindAveragePosition()
+	    {
+	        var averagePos = Vector3.zero;
+	        int targetsNum = 0;
+
+	        foreach(var obj in objectsToTrack)
+	        {
+		        averagePos += obj.transform.position;
+		        ++targetsNum;
+	        }
+
+	        if(targetsNum > 0)
+	        {
+		        averagePos /= targetsNum;
+	        }
+
+	        averagePos.y = transform.position.y;
+		    return averagePos;
+	    }
+
+		void CalculateZoom(Vector3 targetPos)
 		{
-			var sum = Vector3.zero;
-			if(spawnedPenguins.Count == 0)
-				return sum;
-			foreach(var spawnedPenguin in spawnedPenguins)
-			{
-				sum += spawnedPenguin.transform.position;
-			}
-			return sum / spawnedPenguins.Count;
+			float requiredSize = FindRequiredSize(targetPos);
+			var newPos = transform.position;
+			newPos.y = 90f / ActiveCamera.fieldOfView * requiredSize;
+			newPos.y = Mathf.SmoothDamp(
+				transform.position.y, 
+				newPos.y, ref currentVelocity, smoothSpeed);
+			transform.position = newPos;
 		}
+		
+		float FindRequiredSize(Vector3 targetPosition)
+	    {
+	        var targetLocalPos = transform.InverseTransformPoint(targetPosition);
+	        float size = 0f;
+	        foreach(var obj in objectsToTrack)
+	        {
+		        var localPos = transform.InverseTransformPoint(obj.transform.position);
+		        var desiredPosToTarget = localPos - targetLocalPos;
+		        size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y));
+		        size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / ActiveCamera.aspect);
+	        }
+	        size += screenEdgeSafeOffset;
+	        size = Mathf.Max(size, minCameraYPos);
+	        return size;
+	    }
 	}
 }
