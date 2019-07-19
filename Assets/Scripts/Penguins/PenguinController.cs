@@ -6,6 +6,8 @@ namespace SGJ
 	{
 		[SerializeField]
 		PenguinStats Stats;
+		[SerializeField]
+		bool isEditorControllable = false;
 		
 		Rigidbody rb;
 
@@ -21,6 +23,9 @@ namespace SGJ
 
 		void HandleMovement()
 		{
+			if(!isEditorControllable)
+				return;
+			
 			var horizontal = Input.GetAxis("Horizontal");
 			var vertical = Input.GetAxis("Vertical");
 
