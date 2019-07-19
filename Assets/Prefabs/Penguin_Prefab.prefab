@@ -108,7 +108,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7577703745145469207
 MonoBehaviour:
@@ -122,3 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2745d679ec3b1954d986df4a482729c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats:
+    movementSpeed: 9
+    fatMeasures:
+    - Level: 1
+      MaxFatValue: 20
+    - Level: 2
+      MaxFatValue: 50
+    - Level: 3
+      MaxFatValue: 60
+  isEditorControllable: 1
