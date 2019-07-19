@@ -1,4 +1,7 @@
-public class GameManager : MonoSingleton<GameManager>
+namespace SGJ
 {
+	public class GameManager : MonoSingleton<GameManager>
+	{
 	
+	}
 }
