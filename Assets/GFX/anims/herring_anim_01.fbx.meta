@@ -6,7 +6,27 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herring_crown
+    second: {fileID: 2100000, guid: 944c6586b43955c48b2d82e61e523b3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herring_eye
+    second: {fileID: 2100000, guid: a68cf7b0064387241b2cae7ff3f895b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herring_lips
+    second: {fileID: 2100000, guid: 1ee31ea42ff9e50478a97b4a51df78cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herring_skin
+    second: {fileID: 2100000, guid: 29fa62da39711794288d64e28a8ff6eb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
