@@ -37,3 +37,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+ProjectSettings/XRSettings.asset
+Assets/GFX/sprites/splash_anim/splash_anim_01.anim
+Assets/GFX/sprites/splash_anim/splash_anim_0008.controller
+Assets/GFX/sprites/splash_anim/IceCube_Prefab.controller.meta
+Assets/GFX/sprites/splash_anim/IceCube_Prefab.controller
