@@ -118,7 +118,7 @@ namespace SGJ
 			var slideVector = Vector3.zero;
 			slideVector.x = lastInput.normalized.x;
 			slideVector.z = lastInput.normalized.y;
-			var force = CurrentFatMeasure.SlideForce * Time.deltaTime * slideVector;
+			var force = CurrentFatMeasure.SlideForce * slideVector;
 			Debug.Log($"SLIDING WITH FORCE {force.ToString()}");
 			
 			rb.AddForce(force, ForceMode.Force);
