@@ -19,7 +19,7 @@ namespace SGJ
 		{
 			get
 			{
-				return CurrentFatMeasure.Level;
+				return CurrentFatMeasure != null ? CurrentFatMeasure.Level : 0;
 			}
 		}
 		
@@ -102,6 +102,11 @@ namespace SGJ
 			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
 			
 			transform.rotation = Quaternion.LookRotation(movementVector);
+		}
+
+		public void HandleSlide()
+		{
+			
 		}
 
 		void OnCollisionEnter(Collision other)
