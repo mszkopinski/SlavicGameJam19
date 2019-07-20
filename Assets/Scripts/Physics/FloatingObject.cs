@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +35,10 @@ namespace SGJ
 
 		void Update()
 		{
-			pointOfForce = transform.position + transform.TransformDirection(Vector3.zero);
+			// pointOfForce = transform.position + transform.TransformDirection(Vector3.zero);
+			pointOfForce = boxCollider.bounds.center;
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(pointOfForce, 20f);
 			forceFactor = 1f - (pointOfForce.y - waterLevel) / floatHeight;
 			if(forceFactor <= 0f) return;
 			upLiftForce = rb.mass * (forceFactor - (rb.velocity.y * bounceDeep)) * -Physics.gravity;
