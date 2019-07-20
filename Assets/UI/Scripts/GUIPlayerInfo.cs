@@ -36,6 +36,8 @@ namespace SGJ.UI
         [SerializeField] 
         private GameObject notReadyIndicator;
 
+        [SerializeField] private GameObject deadIndicator;
+
         private GameObject source;
         private PenguinController penguin;
         private PlayerInput playerInput;
@@ -140,6 +142,14 @@ namespace SGJ.UI
         public void OnMatchStarted(object value)
         {
             readyIndicator.SetActive(false);
+        }
+
+        public void OnPlayerDead(object value)
+        {
+            if (Source && Source.Equals((GameObject) value))
+            {
+                deadIndicator.SetActive(true);
+            }
         }
     }
     

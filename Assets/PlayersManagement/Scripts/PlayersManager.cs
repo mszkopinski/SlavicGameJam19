@@ -55,7 +55,17 @@ namespace SGJ
                 {
                     AssignNextPlayer(i);
                 }
-                
+
+                if (player.GetButtonDown("VoteRestart"))
+                {
+                    OnPlayerRestartVoteStart(null);
+                }
+
+                if (player.GetButtonUp("VoteRestart"))
+                {
+                    OnPlayerRestartVoteEnd(null);
+                }
+
                 /*else if (player.GetButtonDown("VoteRestart"))
                 {
                     restartVoters.Add(player.id);
@@ -128,7 +138,7 @@ namespace SGJ
         {
             restartVotes++;
 
-            if (restartVotes == playersReady.Count - 1)
+            if (restartVotes == playersReady.Count)
             {
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
@@ -138,6 +148,10 @@ namespace SGJ
         public void OnPlayerRestartVoteEnd(object value)
         {
             restartVotes--;
+            if (restartVotes < 0)
+            {
+                restartVotes = 0;
+            }
         }
 
         // This class is used to map the Rewired Player Id to your game player id
