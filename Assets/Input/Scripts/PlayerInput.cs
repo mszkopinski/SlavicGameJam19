@@ -76,8 +76,7 @@ namespace SGJ
 
         private void OnReadyButtonDown(InputActionEventData data)
         {
-            Debug.Log("On Ready na playerku");
-            player.controllers.maps.SetMapsEnabled(false, "Ready");
+             player.controllers.maps.SetMapsEnabled(false, "Ready");
             PlayerReadyEvent.Raise(gameObject);
         }
 

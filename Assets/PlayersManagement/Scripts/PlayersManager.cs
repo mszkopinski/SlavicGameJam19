@@ -18,8 +18,6 @@ namespace SGJ
         
         [SerializeField]
         private int maxPlayers = 8;
-        
-        
 
         [SerializeField] private GameObject PlayerPrefab;
 
