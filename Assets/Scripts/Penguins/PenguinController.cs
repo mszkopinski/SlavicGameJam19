@@ -9,7 +9,10 @@ namespace SGJ
 {
 	public class PenguinController : MonoBehaviour
 	{
-		public static event Action<PenguinController> Spawned; 
+		public static event Action<PenguinController> Spawned;
+
+		public event Action<int> FatLevelChanged;
+		public event Action<float> FatValueChanged; 
 		
 		[SerializeField]
 		PenguinStats Stats;
@@ -60,6 +63,7 @@ namespace SGJ
 			{
 				if(value == currentFatValue) return;
 				currentFatValue = value;
+				FatValueChanged?.Invoke(currentFatValue);
 				if(currentFatValue >= CurrentFatMeasure.MaxFatValue)
 				{
 					var nextFatMeasure = Stats.fatMeasures.FirstOrDefault(m => m.Level == CurrentFatMeasure.Level + 1);
@@ -106,6 +110,7 @@ namespace SGJ
 		{
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
+			FatValueChanged?.Invoke(CurrentFatValue);
 			initialScale = transform.localScale;
 		}
 
@@ -157,11 +162,16 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
+			if(newMeasure == null)
+				return;
+			
 			rb.constraints = (RigidbodyConstraints)84;
-			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
+			transform.DOScale(initialScale * newMeasure.ScaleFactor, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
 			rb.constraints = (RigidbodyConstraints)80;
 			impulseSource.GenerateImpulse();
+			
+			FatLevelChanged?.Invoke(newMeasure.Level);
 		}
 
 		protected virtual void OnSpawned()

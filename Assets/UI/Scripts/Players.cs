@@ -13,7 +13,7 @@ namespace SGJ.UI
         {
             GameObject source = (GameObject) value;
             GameObject player = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, Container.transform);
-            player.GetComponent<Player>().Source = source;
+            player.GetComponent<GUIPlayerInfo>().Source = source;
         }
     }
     

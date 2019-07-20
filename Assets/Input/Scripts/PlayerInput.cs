@@ -45,7 +45,7 @@ namespace SGJ
                 foreach (var indicator in indicators)
                 {
                     Color color = indicatorColor;
-                    color.a = 0.3f;
+                    color.a = 0.9f;
                     indicator.color = color;
                 }
             }
