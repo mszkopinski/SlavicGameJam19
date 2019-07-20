@@ -3748,7 +3748,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.9629e-41, y: 6e-44, z: 2.3509887e-38, w: 1e-45}
+  m_BoundingSphereOverride: {x: 4.5915e-41, y: 1.46e-43, z: 0, w: 2.2e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -13588,7 +13588,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.4301082, y: 0.019883519, z: -0.009475421, w: -0.9025087}
+  m_LocalRotation: {x: -0.4301082, y: 0.019883512, z: -0.00947542, w: -0.9025087}
   m_LocalPosition: {x: 2.236651, y: 28.896599, z: -31.914118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28516,7 +28516,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198506412}
-  m_LocalRotation: {x: -0.4301082, y: 0.019883519, z: -0.009475421, w: -0.9025087}
+  m_LocalRotation: {x: -0.4301082, y: 0.019883512, z: -0.00947542, w: -0.9025087}
   m_LocalPosition: {x: 1.9399996, y: 20.59, z: -25.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -57698,6 +57698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5415144671573081630, guid: 26baca054b47c400b8792947e6302a0b,
         type: 3}
+      propertyPath: OrcasPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415144671573081630, guid: 26baca054b47c400b8792947e6302a0b,
+        type: 3}
       propertyPath: Island
       value: 
       objectReference: {fileID: 2018616559}
@@ -57727,5 +57732,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4552280434372372533, guid: 4a7163b0545294afc8913476198684d3,
         type: 3}
+    - target: {fileID: 5415144671573081630, guid: 26baca054b47c400b8792947e6302a0b,
+        type: 3}
+      propertyPath: OrcasPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4552280434372372533, guid: a1f8aff98c36c4971b769587d08d6bda,
+        type: 3}
+    - target: {fileID: 5415144671573081630, guid: 26baca054b47c400b8792947e6302a0b,
+        type: 3}
+      propertyPath: MinOrcasSpawnDelay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415144671573081630, guid: 26baca054b47c400b8792947e6302a0b,
+        type: 3}
+      propertyPath: MaxOrcasSpawnDelay
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26baca054b47c400b8792947e6302a0b, type: 3}
