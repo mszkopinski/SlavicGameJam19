@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 1990892776744985366}
   m_Layer: 0
   m_Name: Penguin_Prefab
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,17 +255,23 @@ MonoBehaviour:
     movementSpeed: 9
     fatMeasures:
     - Level: 1
-      MaxFatValue: 20
-      Mass: 20
+      MaxFatValue: 10
+      Mass: 1
       DecelerationPercentage: 0.1
+      SlideForce: 10000
+      SlideCooldown: 5
     - Level: 2
-      MaxFatValue: 50
+      MaxFatValue: 30
       Mass: 20
       DecelerationPercentage: 0.1
+      SlideForce: 20
+      SlideCooldown: 5
     - Level: 3
-      MaxFatValue: 60
+      MaxFatValue: 90
       Mass: 20
       DecelerationPercentage: 0.1
+      SlideForce: 20
+      SlideCooldown: 5
   isEditorControllable: 1
   PlayerDataChanged: {fileID: 11400000, guid: 73a6029e3772b4fd3ac060b60cb8905e, type: 2}
 --- !u!114 &1990892776744985366

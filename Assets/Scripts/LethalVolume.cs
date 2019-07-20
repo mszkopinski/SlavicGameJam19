@@ -7,13 +7,18 @@ namespace SGJ
 	{
 		void OnTriggerEnter(Collider col)
 		{
+			if(!col.IsEntity())
+				return;
 			var penguinController = col.GetComponent<PenguinController>();
 			if(penguinController != null)
 			{
-				
+				Debug.Log("Should destroy penguin");
 			}
-			Destroy(col.gameObject);
-			Debug.Log("Should destroy collider");
+			else
+			{
+				Destroy(col.gameObject);
+				Debug.Log("Should destroy fish");
+			}
 		}
 	}
 }
