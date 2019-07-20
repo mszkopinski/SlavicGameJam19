@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace SGJ19
+namespace SGJ
 {
     [System.Serializable]
     public class ChangeEvent : UnityEvent<object> { };

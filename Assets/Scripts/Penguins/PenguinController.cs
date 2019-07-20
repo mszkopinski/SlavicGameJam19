@@ -13,6 +13,8 @@ namespace SGJ
 		[SerializeField]
 		bool isEditorControllable = false;
 
+		[SerializeField] private GameEvent PlayerDataChanged;
+
 		public int CurrentFatLevel
 		{
 			get
@@ -90,40 +92,25 @@ namespace SGJ
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
 		}
-	
-		/*void Update()
-		{
-			HandleMovement();
-		}
-
-		void HandleMovement()
-		{
-			if(!isEditorControllable)
-				return;
-			
-			var horizontal = Input.GetAxis("Horizontal");
-			var vertical = Input.GetAxis("Vertical");
-
-			var movementVector = Vector3.one;
-			movementVector.x = horizontal * Stats.movementSpeed;
-			movementVector.z = vertical * Stats.movementSpeed;
-			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
-		}*/
 
 		public void HandleRewiredMovement(Vector2 input)
 		{
 			var movementVector = Vector3.one;
 			movementVector.x = input.x * Stats.movementSpeed;
+			movementVector.y = 0;
 			movementVector.z = input.y * Stats.movementSpeed;
 			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
+			
+			transform.rotation = Quaternion.LookRotation(movementVector);
 		}
 
-		void OnTriggerEnter(Collider col)
+		void OnCollisionEnter(Collision other)
 		{
-			if(col.GetComponent(typeof(IEdible)) is IEdible edible)
+			if(other.collider.GetComponent(typeof(IEdible)) is IEdible edible)
 			{
 				edible.OnEaten(out var productFatValue);
 				CurrentFatValue += productFatValue;
+				PlayerDataChanged.Raise(gameObject);
 			}
 		}
 

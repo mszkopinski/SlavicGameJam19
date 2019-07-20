@@ -187,11 +187,14 @@ MonoBehaviour:
       _defaultJoystickMaps: []
       _defaultMouseMaps: []
       _defaultKeyboardMaps:
-      - _enabled: 0
-        _categoryId: 0
-        _layoutId: 0
       - _enabled: 1
         _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
         _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
@@ -210,11 +213,14 @@ MonoBehaviour:
       _descriptiveName: Player1
       _startPlaying: 1
       _defaultJoystickMaps:
-      - _enabled: 0
-        _categoryId: 0
-        _layoutId: 0
       - _enabled: 1
         _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps: []
@@ -236,10 +242,13 @@ MonoBehaviour:
       _startPlaying: 1
       _defaultJoystickMaps:
       - _enabled: 1
-        _categoryId: 0
+        _categoryId: 1
         _layoutId: 0
       - _enabled: 0
-        _categoryId: 1
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps: []
@@ -260,11 +269,14 @@ MonoBehaviour:
       _descriptiveName: Player3
       _startPlaying: 1
       _defaultJoystickMaps:
-      - _enabled: 0
-        _categoryId: 0
-        _layoutId: 0
       - _enabled: 1
         _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps: []
@@ -285,11 +297,98 @@ MonoBehaviour:
       _descriptiveName: Player4
       _startPlaying: 1
       _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
       - _enabled: 0
         _categoryId: 0
         _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+      _controllerMapLayoutManagerSettings:
+        _enabled: 1
+        _loadFromUserDataStore: 1
+        _ruleSets: []
+      _controllerMapEnablerSettings:
+        _enabled: 1
+        _ruleSets: []
+    - _id: 6
+      _name: Player5
+      _descriptiveName: Player5
+      _startPlaying: 1
+      _defaultJoystickMaps:
       - _enabled: 1
         _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+      _controllerMapLayoutManagerSettings:
+        _enabled: 1
+        _loadFromUserDataStore: 1
+        _ruleSets: []
+      _controllerMapEnablerSettings:
+        _enabled: 1
+        _ruleSets: []
+    - _id: 7
+      _name: Player6
+      _descriptiveName: Player6
+      _startPlaying: 1
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+      _controllerMapLayoutManagerSettings:
+        _enabled: 1
+        _loadFromUserDataStore: 1
+        _ruleSets: []
+      _controllerMapEnablerSettings:
+        _enabled: 1
+        _ruleSets: []
+    - _id: 8
+      _name: Player7
+      _descriptiveName: Player7
+      _startPlaying: 1
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 1
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 2
+        _layoutId: 0
+      - _enabled: 0
+        _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps: []
@@ -360,16 +459,30 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 6
+      _name: Ready
+      _type: 1
+      _descriptiveName: Ready
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 2
     actionCategories:
     - _name: Default
       _descriptiveName: Gameplay
       _tag: 
       _id: 0
       _userAssignable: 1
-    - _name: Assignment
-      _descriptiveName: Assignment
+    - _name: Joining
+      _descriptiveName: Joining
       _tag: 
       _id: 1
+      _userAssignable: 1
+    - _name: Ready
+      _descriptiveName: Ready
+      _tag: 
+      _id: 2
       _userAssignable: 1
     actionCategoryMap:
       list:
@@ -377,6 +490,8 @@ MonoBehaviour:
         actionIds: 0000000001000000020000000300000005000000
       - categoryId: 1
         actionIds: 04000000
+      - categoryId: 2
+        actionIds: 06000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -409,10 +524,17 @@ MonoBehaviour:
       _userAssignable: 1
       _checkConflictsWithAllCategories: 1
       _checkConflictsCategoryIds: 
-    - _name: Assignment
-      _descriptiveName: Assignment
+    - _name: Joining
+      _descriptiveName: Joining
       _tag: 
       _id: 1
+      _userAssignable: 1
+      _checkConflictsWithAllCategories: 1
+      _checkConflictsCategoryIds: 
+    - _name: Ready
+      _descriptiveName: Ready
+      _tag: 
+      _id: 2
       _userAssignable: 1
       _checkConflictsWithAllCategories: 1
       _checkConflictsCategoryIds: 
@@ -504,6 +626,24 @@ MonoBehaviour:
       actionElementMaps:
       - _actionCategoryId: 0
         _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: 15
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+    - id: 3
+      categoryId: 2
+      layoutId: 0
+      name: 
+      hardwareGuidString: 83b427e4-086f-47f3-bb06-be266abd1ca5
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 6
         _elementType: 1
         _elementIdentifierId: 15
         _axisRange: 0
@@ -660,22 +800,40 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+    - id: 2
+      categoryId: 2
+      layoutId: 0
+      name: 
+      hardwareGuidString: 
+      customControllerUid: 0
+      actionElementMaps:
+      - _actionCategoryId: 0
+        _actionId: 6
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 32
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
-    playerIdCounter: 6
-    actionIdCounter: 6
-    actionCategoryIdCounter: 2
+    playerIdCounter: 9
+    actionIdCounter: 8
+    actionCategoryIdCounter: 3
     inputBehaviorIdCounter: 1
-    mapCategoryIdCounter: 2
+    mapCategoryIdCounter: 3
     joystickLayoutIdCounter: 1
     keyboardLayoutIdCounter: 1
     mouseLayoutIdCounter: 1
     customControllerLayoutIdCounter: 1
-    joystickMapIdCounter: 2
-    keyboardMapIdCounter: 2
+    joystickMapIdCounter: 4
+    keyboardMapIdCounter: 3
     mouseMapIdCounter: 0
     customControllerMapIdCounter: 0
     customControllerIdCounter: 0

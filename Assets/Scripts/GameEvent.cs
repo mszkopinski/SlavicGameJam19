@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace SGJ19
+namespace SGJ
 {
     [CreateAssetMenu(fileName = "new Game Event", menuName = "SGJ19/Game Event")]
     public class GameEvent : ScriptableObject

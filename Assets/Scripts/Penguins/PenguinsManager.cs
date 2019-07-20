@@ -25,7 +25,7 @@ namespace SGJ
 			spawnedPenguins.Add(controller);
 		}
 
-		void OnGUI()
+		/*void OnGUI()
 		{
 			GUILayout.BeginArea(new Rect(0f, 0f, Screen.width / 2f, Screen.height));
 			GUILayout.BeginVertical();
@@ -39,6 +39,6 @@ namespace SGJ
 			}
 			GUILayout.EndVertical();
 			GUILayout.EndArea();
-		}
+		}*/
 	}
 }

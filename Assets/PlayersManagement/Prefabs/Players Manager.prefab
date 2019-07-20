@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8234869082940513724}
   - component: {fileID: 2074117246160875436}
+  - component: {fileID: 6548083604934963528}
   m_Layer: 0
   m_Name: Players Manager
   m_TagString: Untagged
@@ -43,3 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54249674d8a1449a09926bf4624a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxPlayers: 8
+  PlayerPrefab: {fileID: 0}
+  PlayersReady:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  SpawnPoints: []
+--- !u!114 &6548083604934963528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691136768738818667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 449a32669a2864df185507ced44dc1b3, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2074117246160875436}
+        m_MethodName: OnPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
