@@ -110,6 +110,16 @@ namespace SGJ
             }
         }
 
+        public void OnMatchStart(object value)
+        {
+            Player player;
+            for (int i = 0; i < ReInput.players.playerCount; i++)
+            {
+                player = ReInput.players.GetPlayer(i);
+                player.controllers.maps.SetMapsEnabled(false, "Joining");
+            }
+        }
+
         // This class is used to map the Rewired Player Id to your game player id
         private class PlayerMap {
             public int rewiredPlayerId;
