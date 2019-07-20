@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
@@ -18,12 +17,19 @@ namespace SGJ
 
 		[SerializeField] private GameEvent PlayerDataChanged;
 
+		public bool IsAffectingCracks
+		{
+			get => CurrentFatMeasure?.IsAffecting ?? false;
+		}
+
+		public int MaxStepsOnCrack
+		{
+			get => CurrentFatMeasure?.StepsToCrack ?? 0;
+		}
+
 		public int CurrentFatLevel
 		{
-			get
-			{
-				return CurrentFatMeasure != null ? CurrentFatMeasure.Level : 0;
-			}
+			get => CurrentFatMeasure?.Level ?? 0;
 		}
 		
 		public int MaxFatLevel
@@ -85,6 +91,7 @@ namespace SGJ
 		Rigidbody rb;
 		Vector2 lastInput;
 		bool isOnCooldown;
+		Vector3 initialScale;
 
 		void Awake()
 		{
@@ -96,6 +103,7 @@ namespace SGJ
 		{
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
+			initialScale = transform.localScale;
 		}
 
 		public void HandleRewiredMovement(Vector2 input)
@@ -146,8 +154,10 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
-			transform.DOScale(CurrentFatLevel > 1 ? CurrentFatLevel * 3 : CurrentFatLevel, 0.3f);
+			rb.isKinematic = true;
+			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
+			rb.isKinematic = false;
 		}
 
 		protected virtual void OnSpawned()
