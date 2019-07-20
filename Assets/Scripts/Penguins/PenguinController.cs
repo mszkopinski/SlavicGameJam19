@@ -99,11 +99,13 @@ namespace SGJ
 		bool isOnCooldown;
 		Vector3 initialScale;
 		CinemachineImpulseSource impulseSource;
+		SkinnedMeshRenderer skinnedMeshRenderer;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
 			impulseSource = GetComponent<CinemachineImpulseSource>();
+			skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>(true);
 			OnSpawned();
 		}
 
