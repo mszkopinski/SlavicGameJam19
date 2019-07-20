@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -17,7 +18,19 @@ namespace SGJ.UI
         [SerializeField] 
         private TextMeshProUGUI playerFatLevelLabel;
         [SerializeField]
-        Image playerBackgroundBorder; 
+        Image playerBackgroundBorder;
+        [SerializeField]
+        RectTransform playerFatRect;
+        [SerializeField]
+        CanvasGroup playerFatLevelGroup;
+        [SerializeField]
+        RectTransform playerFatLevelRect;
+        [SerializeField]
+        CanvasGroup playerFatGroup;
+        [SerializeField]
+        float rectEndWidth = 192f;
+        [SerializeField]
+        AnimationCurve sizeAnimationCurve;
         [SerializeField] 
         private GameObject readyIndicator;
         [SerializeField] 
@@ -57,6 +70,12 @@ namespace SGJ.UI
         {
             readyIndicator.SetActive(false);
             notReadyIndicator.SetActive(true);
+
+            playerFatLevelRect.SetSizeDelta(0f);
+            playerFatRect.SetSizeDelta(0f);
+
+            playerFatGroup.alpha = 0f;
+            playerFatLevelGroup.alpha = 0f;
         }
 
         public void RenderData()
@@ -89,6 +108,23 @@ namespace SGJ.UI
             {
                 readyIndicator.SetActive(true);
                 notReadyIndicator.SetActive(false);
+
+                const float transitionTime = .23f;
+                
+                var fatNewSizeDelta = playerFatRect.sizeDelta;
+                fatNewSizeDelta.x = rectEndWidth;
+                playerFatRect
+                    .DOSizeDelta(fatNewSizeDelta, transitionTime)
+                    .SetEase(sizeAnimationCurve)
+                    .OnComplete(() => { playerFatGroup.DOFade(1f, 0.25f); });
+                
+                var fatLevelNewSizeDelta = playerFatLevelRect.sizeDelta;
+                fatLevelNewSizeDelta.x = rectEndWidth;
+                playerFatLevelRect
+                    .DOSizeDelta(fatLevelNewSizeDelta, transitionTime)
+                    .SetEase(sizeAnimationCurve)
+                    .OnComplete(() => { playerFatLevelGroup.DOFade(1f, 0.25f); });
+                
                 playerFatValueLabel.gameObject.SetActive(true);
             }
         }

@@ -19,4 +19,15 @@ namespace SGJ
 			       viewPos.y <= MaxViewPosValue;
 		}
 	}
+
+	public static class UIExtensions
+	{
+		public static void SetSizeDelta(this RectTransform rectTransform, float? x = null, float? y = null)
+		{
+			var newSizeDelta = rectTransform.sizeDelta;
+			newSizeDelta.x = x ?? newSizeDelta.x;
+			newSizeDelta.y= y ?? newSizeDelta.y;
+			rectTransform.sizeDelta = newSizeDelta;
+		}
+	}
 }
