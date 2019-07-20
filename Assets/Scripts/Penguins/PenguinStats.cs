@@ -27,5 +27,10 @@ namespace SGJ
 		[Header("Slide")]
 		public float SlideForce = 20f;
 		public float SlideCooldown = 5f;
+
+		[Header("Ice Cracks")]
+		public int StepsToCrack = 3;
+		public bool IsAffecting = true;
+		public float ScaleFactor = 1f;
 	}
 }

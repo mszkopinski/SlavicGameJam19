@@ -186,6 +186,8 @@ GameObject:
   - component: {fileID: 3713461775233299265}
   - component: {fileID: 7577703745145469207}
   - component: {fileID: 1990892776744985366}
+  - component: {fileID: 4913625773689092413}
+  - component: {fileID: 4098319731455670817}
   m_Layer: 0
   m_Name: Penguin_Prefab
   m_TagString: Entity
@@ -252,26 +254,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats:
-    movementSpeed: 9
+    movementSpeed: 20
     fatMeasures:
     - Level: 1
       MaxFatValue: 10
       Mass: 1
       DecelerationPercentage: 0.1
-      SlideForce: 10000
+      SlideForce: 300
       SlideCooldown: 5
+      StepsToCrack: 0
+      IsAffecting: 0
+      ScaleFactor: 1
     - Level: 2
       MaxFatValue: 30
       Mass: 20
       DecelerationPercentage: 0.1
-      SlideForce: 20
+      SlideForce: 500
       SlideCooldown: 5
+      StepsToCrack: 30
+      IsAffecting: 1
+      ScaleFactor: 1.2
     - Level: 3
       MaxFatValue: 90
-      Mass: 20
+      Mass: 50
       DecelerationPercentage: 0.1
-      SlideForce: 20
+      SlideForce: 600
       SlideCooldown: 5
+      StepsToCrack: 25
+      IsAffecting: 1
+      ScaleFactor: 1.5
+    - Level: 4
+      MaxFatValue: 90
+      Mass: 60
+      DecelerationPercentage: 0.1
+      SlideForce: 700
+      SlideCooldown: 5
+      StepsToCrack: 20
+      IsAffecting: 1
+      ScaleFactor: 1.7
+    - Level: 5
+      MaxFatValue: 90
+      Mass: 75
+      DecelerationPercentage: 0.1
+      SlideForce: 800
+      SlideCooldown: 5
+      StepsToCrack: 15
+      IsAffecting: 1
+      ScaleFactor: 2
+    - Level: 6
+      MaxFatValue: 90
+      Mass: 90
+      DecelerationPercentage: 0.1
+      SlideForce: 900
+      SlideCooldown: 5
+      StepsToCrack: 10
+      IsAffecting: 1
+      ScaleFactor: 2.5
   isEditorControllable: 1
   PlayerDataChanged: {fileID: 11400000, guid: 73a6029e3772b4fd3ac060b60cb8905e, type: 2}
 --- !u!114 &1990892776744985366
@@ -303,7 +341,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: SGJ.MovementEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  Shoot:
+  Slide:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7577703745145469207}
@@ -322,12 +360,12 @@ MonoBehaviour:
   Fire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7577703745145469207}
-        m_MethodName: 
+      - m_Target: {fileID: 4913625773689092413}
+        m_MethodName: OnFirePress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -337,6 +375,63 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   PlayerJoinedEvent: {fileID: 11400000, guid: 079b9a506c19247ff9c3a759bc020a0c, type: 2}
   PlayerReadyEvent: {fileID: 11400000, guid: 449a32669a2864df185507ced44dc1b3, type: 2}
+--- !u!114 &4913625773689092413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577703745145469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f50cd0eedcf4d7d8ccde786902ba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 0
+  ProjectilePrefab: {fileID: 5597390216498376298, guid: dd8748531a5544361b6280a957fd6c02,
+    type: 3}
+  ShootForce: 2000
+--- !u!114 &4098319731455670817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577703745145469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 10
+    m_FrequencyGain: 0.1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!1001 &4770603465347656940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,11 +439,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6120130915591540607}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
-        type: 3}
-      propertyPath: m_Name
-      value: Pingwin
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -418,6 +508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
+        type: 3}
+      propertyPath: m_Name
+      value: Pingwin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9cfefc103da4199ba7b0f93ed7b236, type: 3}

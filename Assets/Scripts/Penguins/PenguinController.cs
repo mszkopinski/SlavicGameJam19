@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SGJ
@@ -17,12 +18,19 @@ namespace SGJ
 
 		[SerializeField] private GameEvent PlayerDataChanged;
 
+		public bool IsAffectingCracks
+		{
+			get => CurrentFatMeasure?.IsAffecting ?? false;
+		}
+
+		public int MaxStepsOnCrack
+		{
+			get => CurrentFatMeasure?.StepsToCrack ?? 0;
+		}
+
 		public int CurrentFatLevel
 		{
-			get
-			{
-				return CurrentFatMeasure != null ? CurrentFatMeasure.Level : 0;
-			}
+			get => CurrentFatMeasure?.Level ?? 0;
 		}
 		
 		public int MaxFatLevel
@@ -84,10 +92,13 @@ namespace SGJ
 		Rigidbody rb;
 		Vector2 lastInput;
 		bool isOnCooldown;
+		Vector3 initialScale;
+		CinemachineImpulseSource impulseSource;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
+			impulseSource = GetComponent<CinemachineImpulseSource>();
 			OnSpawned();
 		}
 
@@ -95,6 +106,7 @@ namespace SGJ
 		{
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
+			initialScale = transform.localScale;
 		}
 
 		public void HandleRewiredMovement(Vector2 input)
@@ -118,7 +130,7 @@ namespace SGJ
 			var slideVector = Vector3.zero;
 			slideVector.x = lastInput.normalized.x;
 			slideVector.z = lastInput.normalized.y;
-			var force = CurrentFatMeasure.SlideForce * Time.deltaTime * slideVector;
+			var force = CurrentFatMeasure.SlideForce * slideVector;
 			Debug.Log($"SLIDING WITH FORCE {force.ToString()}");
 			
 			rb.AddForce(force, ForceMode.Force);
@@ -145,7 +157,11 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
-			
+			rb.constraints = (RigidbodyConstraints)84;
+			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
+			transform.DOShakeScale(0.5f, 2f, 10, 0);
+			rb.constraints = (RigidbodyConstraints)80;
+			impulseSource.GenerateImpulse();
 		}
 
 		protected virtual void OnSpawned()

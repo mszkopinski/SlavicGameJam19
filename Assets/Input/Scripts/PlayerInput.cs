@@ -5,6 +5,7 @@ using System.Net;
 using UnityEngine;
 using Rewired;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace SGJ
@@ -18,7 +19,8 @@ namespace SGJ
     {
         [SerializeField] private int playerId;
         [SerializeField] private MovementEvent Movement;
-        [SerializeField] private UnityEvent Shoot;
+        [FormerlySerializedAs("Shoot")] 
+        [SerializeField] private UnityEvent Slide;
         [SerializeField] private UnityEvent Fire;
 
         [SerializeField] private GameEvent PlayerJoinedEvent; 
@@ -60,7 +62,6 @@ namespace SGJ
                 player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slide");
                 
                 player.AddInputEventDelegate(OnReadyButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Ready");
-                //player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "VoteRestart");
                 
                 PlayerJoinedEvent.Raise(gameObject);
             }
@@ -89,12 +90,12 @@ namespace SGJ
 
         private void OnFireButtonDown(InputActionEventData data)
         {
-            Shoot.Invoke();
+            Fire.Invoke();
         }
 
         private void OnSlideButtonDown(InputActionEventData data)
         {
-            Fire.Invoke();
+            Slide.Invoke();
         }
 
         private void OnReadyButtonDown(InputActionEventData data)
