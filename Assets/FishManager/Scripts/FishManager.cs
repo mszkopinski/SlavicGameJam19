@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace SGJ
 {
@@ -19,24 +21,16 @@ namespace SGJ
 
         void OnEnable()
         {
-            WorldBounds = RecalculateBounds(WorldRoot);
-            IslandBounds = RecalculateBounds(IslandRoot);
+            WorldBounds = WorldRoot.CalculateBounds();
+            IslandBounds = IslandRoot.CalculateBounds();
             StartCoroutine(SpawnFish());
         }
-        
-        private Bounds RecalculateBounds (GameObject root)
-        {
-            var bounds = new Bounds(Vector3.zero, Vector3.zero);
-            var renderers = root.GetComponentsInChildren<Renderer>();
-            
-            foreach (var item in renderers)
-            {
-                bounds.Encapsulate(item.bounds);
-            }
 
-            return bounds;
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
-        
+
         private Vector3 GetRandomDestination()
         {
             float minX = IslandRoot.transform.position.x + IslandBounds.extents.x;
@@ -69,8 +63,8 @@ namespace SGJ
                 yield return new WaitForSeconds(Random.Range(MinSpawnDelay, MaxSpawnDelay));
                 if (FishPrefabs.Length > 0)
                 {
-                    WorldBounds = RecalculateBounds(WorldRoot);
-                    IslandBounds = RecalculateBounds(IslandRoot);
+                    WorldBounds = WorldRoot.CalculateBounds();
+                    IslandBounds = IslandRoot.CalculateBounds();
                     
                     var fish = Instantiate(FishPrefabs[Random.Range(0, FishPrefabs.Length)], GetRandomSource(), Quaternion.identity);
                     var rigid = fish.GetComponent<Rigidbody>();
