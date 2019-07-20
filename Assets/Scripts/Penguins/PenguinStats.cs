@@ -32,5 +32,7 @@ namespace SGJ
 		public int StepsToCrack = 3;
 		public bool IsAffecting = true;
 		public float ScaleFactor = 1f;
+		[Range(0f, 100f)]
+		public float BlendShapeValue = 0f;
 	}
 }
