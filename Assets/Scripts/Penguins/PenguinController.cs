@@ -93,10 +93,12 @@ namespace SGJ
 		Vector2 lastInput;
 		bool isOnCooldown;
 		Vector3 initialScale;
+		CinemachineImpulseSource impulseSource;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
+			impulseSource = GetComponent<CinemachineImpulseSource>();
 			OnSpawned();
 		}
 
@@ -159,7 +161,7 @@ namespace SGJ
 			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
 			rb.isKinematic = false;
-			gameObject.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+			impulseSource.GenerateImpulse();
 		}
 
 		protected virtual void OnSpawned()
