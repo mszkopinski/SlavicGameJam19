@@ -11,12 +11,13 @@ namespace SGJ.UI
         [SerializeField] private TextMeshProUGUI PlayerName;
         [SerializeField] private TextMeshProUGUI PlayerFatDetails;
         [SerializeField] private GameObject ReadyIndicator;
-
         [SerializeField] private GameObject NotReadyIndicator;
+        [SerializeField] private GameObject VoteRestartIndicator;
 
         private GameObject source;
         private PenguinController penguin;
         private PlayerInput playerInput;
+        
         
         public GameObject Source
         {
@@ -62,6 +63,31 @@ namespace SGJ.UI
         public void OnMatchStarted(object value)
         {
             ReadyIndicator.SetActive(false);
+        }
+
+        public void PlayerFeltIntoWater(object value)
+        {
+            if (Source && Source.Equals((GameObject) value))
+            {
+                Destroy(gameObject);
+            }
+            
+        }
+
+        public void OnPlayerVoteRestartStart(object value)
+        {
+            if (Source && Source.Equals((GameObject) value))
+            {
+                VoteRestartIndicator.SetActive(true);
+            }
+        }
+
+        public void OnPlayerVoteRestartEnd(object value)
+        {
+            if (Source && Source.Equals((GameObject) value))
+            {
+                VoteRestartIndicator.SetActive(false);
+            }
         }
     }
     

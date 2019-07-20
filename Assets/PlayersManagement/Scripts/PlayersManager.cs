@@ -23,8 +23,7 @@ namespace SGJ
 
         private List<PlayerMap> playerMap = new List<PlayerMap>();// Maps Rewired Player ids to game player ids
         private int gamePlayerIdCounter = 0;
-        private List<int> restartVoters = new List<int>();
-        //private List<int> playersReady = new List<int>();
+        
         private readonly List<GameObject> playersReady = new List<GameObject>();
 
         [SerializeField]
@@ -32,6 +31,17 @@ namespace SGJ
 
         [SerializeField] private Transform[] SpawnPoints;
         [SerializeField] private Color[] PlayerColors;
+
+        private int restartVotes = 0;
+
+        public void OnVoteRestartStart()
+        {
+        }
+
+        public void OnVoteRestartEnd()
+        {
+            
+        }
 
         private void Update()
         {
@@ -85,13 +95,7 @@ namespace SGJ
         private int GetNextGamePlayerId() {
             return gamePlayerIdCounter++;
         }
-
-        private IEnumerator RemoveVote(int playerId, float delay = 0.5f) 
-        {
-            yield return new WaitForSeconds(delay);
-            restartVoters.Remove(playerId);
-        }
-
+        
         public void OnPlayerReady(object value)
         {
             PlayerInput playerInput = ((GameObject) value).GetComponent<PlayerInput>();
@@ -118,6 +122,22 @@ namespace SGJ
                 player = ReInput.players.GetPlayer(i);
                 player.controllers.maps.SetMapsEnabled(false, "Joining");
             }
+        }
+
+        public void OnPlayerRestartVoteStart(object value)
+        {
+            restartVotes++;
+
+            if (restartVotes == playersReady.Count - 1)
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
+        }
+
+        public void OnPlayerRestartVoteEnd(object value)
+        {
+            restartVotes--;
         }
 
         // This class is used to map the Rewired Player Id to your game player id
