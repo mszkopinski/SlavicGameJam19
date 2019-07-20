@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8234869082940513724}
   - component: {fileID: 2074117246160875436}
   - component: {fileID: 6548083604934963528}
+  - component: {fileID: 251649290}
+  - component: {fileID: 251649293}
+  - component: {fileID: 251649292}
   m_Layer: 0
   m_Name: Players Manager
   m_TagString: Untagged
@@ -44,14 +47,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54249674d8a1449a09926bf4624a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPlayers: 1
   maxPlayers: 8
-  PlayerPrefab: {fileID: 0}
+  PlayerPrefab: {fileID: 7577703745145469206, guid: ab16bea1a75c1cc4ea31b87d27ad7825,
+    type: 3}
   PlayersReady:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  SpawnPoints: []
+  SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PlayerColors:
+  - {r: 0, g: 0.7075472, b: 0.33344802, a: 1}
+  - {r: 0.8490566, g: 0.8128029, b: 0.12415449, a: 1}
+  - {r: 0.98039216, g: 0.41960782, b: 0.8887452, a: 1}
+  - {r: 0.3466699, g: 0.032395888, b: 0.9811321, a: 1}
+  - {r: 0.9433962, g: 0.5452265, b: 0, a: 1}
+  - {r: 0.4716981, g: 0, b: 0.4238293, a: 1}
+  - {r: 0, g: 1, b: 0.95107245, a: 1}
+  - {r: 0.251068, g: 0.28295377, b: 0.5849056, a: 1}
 --- !u!114 &6548083604934963528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +114,93 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2074117246160875436}
         m_MethodName: OnPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &251649290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691136768738818667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 53c9d8307c17a42d098e07976181eeed, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2074117246160875436}
+        m_MethodName: OnMatchStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &251649293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691136768738818667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c810f6e5eaebc4800817ed672d4329b3, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2074117246160875436}
+        m_MethodName: OnPlayerRestartVoteStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &251649292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691136768738818667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1e3829542c38d415c876bf14a5c797f8, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2074117246160875436}
+        m_MethodName: OnPlayerRestartVoteEnd
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

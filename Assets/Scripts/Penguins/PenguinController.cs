@@ -20,6 +20,7 @@ namespace SGJ
 		bool isEditorControllable = false;
 
 		[SerializeField] private GameEvent PlayerDataChanged;
+		[SerializeField] private GameEvent PlayerDestroyed;
 
 		public bool IsAffectingCracks
 		{
@@ -177,6 +178,11 @@ namespace SGJ
 		protected virtual void OnSpawned()
 		{
 			Spawned?.Invoke(this);
+		}
+
+		private void OnDestroy()
+		{
+			PlayerDestroyed.Raise(gameObject);
 		}
 	}
 }

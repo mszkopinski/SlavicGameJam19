@@ -22,9 +22,12 @@ namespace SGJ
         [FormerlySerializedAs("Shoot")] 
         [SerializeField] private UnityEvent Slide;
         [SerializeField] private UnityEvent Fire;
+        [SerializeField] private UnityEvent Slap;
 
         [SerializeField] private GameEvent PlayerJoinedEvent; 
         [SerializeField] private GameEvent PlayerReadyEvent;
+        [SerializeField] private GameEvent PlayerVoteRestartStart;
+        [SerializeField] private GameEvent PlayerVoteRestartEnd;
         
         private Player player; 
         private Vector3 movementVector;
@@ -60,6 +63,9 @@ namespace SGJ
                 player = ReInput.players.GetPlayer(playerId);
                 player.AddInputEventDelegate(OnFireButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Fire");
                 player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slide");
+                player.AddInputEventDelegate(OnSlapButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slap");
+                player.AddInputEventDelegate(OnPlayerVoteRestartStart, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "VoteRestart");
+                player.AddInputEventDelegate(OnPlayerVoteRestartEnd, UpdateLoopType.Update, InputActionEventType.ButtonJustReleased, "VoteRestart");
                 
                 player.AddInputEventDelegate(OnReadyButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Ready");
                 
@@ -98,10 +104,25 @@ namespace SGJ
             Slide.Invoke();
         }
 
+        private void OnSlapButtonDown(InputActionEventData data)
+        {
+            Slap.Invoke();
+        }
+
         private void OnReadyButtonDown(InputActionEventData data)
         {
-             player.controllers.maps.SetMapsEnabled(false, "Ready");
+            player.controllers.maps.SetMapsEnabled(false, "Ready");
             PlayerReadyEvent.Raise(gameObject);
+        }
+
+        private void OnPlayerVoteRestartStart(InputActionEventData data)
+        {
+            PlayerVoteRestartStart.Raise(gameObject);
+        }
+
+        private void OnPlayerVoteRestartEnd(InputActionEventData data)
+        {
+            PlayerVoteRestartEnd.Raise(gameObject);
         }
 
         private void OnDestroy()
@@ -109,6 +130,8 @@ namespace SGJ
             player.RemoveInputEventDelegate(OnFireButtonDown);
             player.RemoveInputEventDelegate(OnSlideButtonDown);
             player.RemoveInputEventDelegate(OnReadyButtonDown);
+            player.RemoveInputEventDelegate(OnPlayerVoteRestartStart);
+            player.RemoveInputEventDelegate(OnPlayerVoteRestartEnd);
         }
     }
 }

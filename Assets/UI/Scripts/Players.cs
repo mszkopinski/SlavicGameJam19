@@ -15,7 +15,7 @@ namespace SGJ.UI
             GameObject player = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, Container.transform);
             player.GetComponent<GUIPlayerInfo>().Source = source;
         }
+        
     }
-    
 
 }
