@@ -4,6 +4,11 @@ namespace SGJ
 {
 	public static class Extensions
 	{
+		public static bool IsEntity(this Collider collider)
+		{
+			return collider.CompareTag("Entity");
+		}
+		
 		static readonly float MaxViewPosValue = .95f;
 		static readonly float MinViewPosValue = 0.05f;
 		

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -78,8 +80,10 @@ namespace SGJ
 		}
 
 		FatMeasure currentFatMeasure;
-		
+
 		Rigidbody rb;
+		Vector2 lastInput;
+		bool isOnCooldown;
 
 		void Awake()
 		{
@@ -95,18 +99,38 @@ namespace SGJ
 
 		public void HandleRewiredMovement(Vector2 input)
 		{
-			var movementVector = Vector3.one;
-			movementVector.x = input.x * Stats.movementSpeed;
-			movementVector.y = 0;
-			movementVector.z = input.y * Stats.movementSpeed;
-			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
+			lastInput = input;
 			
+			var movementVector = Vector3.one;
+			movementVector.x = lastInput.x * Stats.movementSpeed;
+			movementVector.y = 0;
+			movementVector.z = lastInput.y * Stats.movementSpeed;
+			
+			rb.AddForce(movementVector * Time.deltaTime, ForceMode.VelocityChange);
 			transform.rotation = Quaternion.LookRotation(movementVector);
 		}
 
 		public void HandleSlide()
 		{
+			if(isOnCooldown)
+				return;
 			
+			var slideVector = Vector3.zero;
+			slideVector.x = lastInput.normalized.x;
+			slideVector.z = lastInput.normalized.y;
+			var force = CurrentFatMeasure.SlideForce * Time.deltaTime * slideVector;
+			Debug.Log($"SLIDING WITH FORCE {force.ToString()}");
+			
+			rb.AddForce(force, ForceMode.Force);
+
+			StartCoroutine(SlideCooldown());
+		}
+		
+		IEnumerator SlideCooldown()
+		{
+			isOnCooldown = true;
+			yield return new WaitForSeconds(CurrentFatMeasure.SlideCooldown);
+			isOnCooldown = false;
 		}
 
 		void OnCollisionEnter(Collision other)
