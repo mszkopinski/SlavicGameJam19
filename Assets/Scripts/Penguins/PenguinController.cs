@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 namespace SGJ
@@ -145,7 +146,8 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
-			
+			transform.DOScale(CurrentFatLevel > 1 ? CurrentFatLevel * 3 : CurrentFatLevel, 0.3f);
+			transform.DOShakeScale(0.5f, 2f, 10, 0);
 		}
 
 		protected virtual void OnSpawned()
