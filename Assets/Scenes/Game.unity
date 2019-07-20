@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.15759785, g: 0.1811304, b: 0.19674927, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3757,13 +3757,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.04213311, y: -0.2585727, z: 0.011289531, w: 0.96500653}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 5, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &172021828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5144752054124066015, guid: 3d699229723d29d43b148f5ae6b13e38,
@@ -34192,6 +34192,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3366007204426396618, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3366007204426396620, guid: 2039680cc64d3d545961d9145c7f3cb3,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -34342,7 +34347,43 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.000030517578
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987279830995097059, guid: 2039680cc64d3d545961d9145c7f3cb3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3366007202798776946, guid: 2039680cc64d3d545961d9145c7f3cb3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2039680cc64d3d545961d9145c7f3cb3, type: 3}
 --- !u!225 &1419836826 stripped
 CanvasGroup:
