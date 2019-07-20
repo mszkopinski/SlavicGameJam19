@@ -2840,6 +2840,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54249674d8a1449a09926bf4624a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &251649292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251649289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1e3829542c38d415c876bf14a5c797f8, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 251649291}
+        m_MethodName: OnPlayerRestartVoteEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &251649293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251649289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c810f6e5eaebc4800817ed672d4329b3, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 251649291}
+        m_MethodName: OnPlayerRestartVoteStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &258475431 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5686820530799499711, guid: 3d699229723d29d43b148f5ae6b13e38,
@@ -6750,7 +6808,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.43010816, y: 0.019883761, z: -0.009475954, w: -0.9025087}
+  m_LocalRotation: {x: -0.43010816, y: 0.019883716, z: -0.009475932, w: -0.9025087}
   m_LocalPosition: {x: 2.236651, y: 28.896599, z: -31.914118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -13436,7 +13494,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198506412}
-  m_LocalRotation: {x: -0.43010816, y: 0.019883761, z: -0.009475954, w: -0.9025087}
+  m_LocalRotation: {x: -0.43010816, y: 0.019883716, z: -0.009475932, w: -0.9025087}
   m_LocalPosition: {x: 1.9399996, y: 20.59, z: -25.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16970,6 +17028,8 @@ GameObject:
   - component: {fileID: 1541710988}
   - component: {fileID: 1541710989}
   - component: {fileID: 1541710990}
+  - component: {fileID: 1541710992}
+  - component: {fileID: 1541710991}
   m_Layer: 0
   m_Name: '[GameManager]'
   m_TagString: Untagged
@@ -17016,6 +17076,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5682907809dce9b48898a4ea9c866f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1541710991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541710987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a5a78fb68e61349c5bb7d7d81af536c8, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1541710989}
+        m_MethodName: OnPlayerDestroyed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1541710992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541710987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dea609d28352654180829381749daa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 449a32669a2864df185507ced44dc1b3, type: 2}
+  ObjectResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1541710989}
+        m_MethodName: OnPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: SGJ.ChangeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1541745996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9221981458714167833, guid: 3d699229723d29d43b148f5ae6b13e38,
@@ -30263,6 +30381,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 2094500072, guid: b93514923bab0d347a6e533933158b0a, type: 3}
+      propertyPath: PlayerFeltIntoWaterEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: f071342f65e0f43cd994f59104ad264c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93514923bab0d347a6e533933158b0a, type: 3}
 --- !u!1001 &6392286918889256363

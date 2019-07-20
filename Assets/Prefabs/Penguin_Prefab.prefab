@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 1990892776744985366}
   - component: {fileID: 4913625773689092413}
   - component: {fileID: 4098319731455670817}
+  - component: {fileID: 1788435180449548523}
   m_Layer: 0
   m_Name: Penguin_Prefab
   m_TagString: Entity
@@ -208,6 +209,7 @@ Transform:
   m_Children:
   - {fileID: 526395993400461302}
   - {fileID: 7825318037701429649}
+  - {fileID: 8694807562122452032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,6 +278,7 @@ MonoBehaviour:
       SlideCooldown: 5
   isEditorControllable: 1
   PlayerDataChanged: {fileID: 11400000, guid: 73a6029e3772b4fd3ac060b60cb8905e, type: 2}
+  PlayerDestroyed: {fileID: 11400000, guid: a5a78fb68e61349c5bb7d7d81af536c8, type: 2}
 --- !u!114 &1990892776744985366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,8 +340,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  Slap:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1788435180449548523}
+        m_MethodName: OnSlapButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   PlayerJoinedEvent: {fileID: 11400000, guid: 079b9a506c19247ff9c3a759bc020a0c, type: 2}
   PlayerReadyEvent: {fileID: 11400000, guid: 449a32669a2864df185507ced44dc1b3, type: 2}
+  PlayerVoteRestartStart: {fileID: 11400000, guid: c810f6e5eaebc4800817ed672d4329b3,
+    type: 2}
+  PlayerVoteRestartEnd: {fileID: 11400000, guid: 1e3829542c38d415c876bf14a5c797f8,
+    type: 2}
 --- !u!114 &4913625773689092413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +419,114 @@ MonoBehaviour:
     m_DirectionMode: 0
     m_DissipationMode: 2
     m_DissipationDistance: 1000
+--- !u!114 &1788435180449548523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577703745145469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53cfbeeaf5af4b679bbc853c0ce2482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slapForce: 300
+--- !u!136 &5907963453069375629
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535823384474680469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.16
+  m_Height: 2.05
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 1.07}
+--- !u!1001 &649274249458640411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6120130915591540607}
+    m_Modifications:
+    - target: {fileID: 9185084129213913742, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_Name
+      value: BitchSlapper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 680b77e22613449358f2a4e6dee8aa08, type: 3}
+--- !u!1 &8535823384474680469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9185084129213913742, guid: 680b77e22613449358f2a4e6dee8aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 649274249458640411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8694807562122452032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8189943344080239195, guid: 680b77e22613449358f2a4e6dee8aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 649274249458640411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4770603465347656940
 PrefabInstance:
   m_ObjectHideFlags: 0

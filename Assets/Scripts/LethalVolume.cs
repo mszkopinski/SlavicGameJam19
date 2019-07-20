@@ -5,6 +5,7 @@ namespace SGJ
 	[RequireComponent(typeof(Collider))]
 	public class LethalVolume : MonoBehaviour
 	{
+		[SerializeField] private GameEvent PlayerFeltIntoWaterEvent;
 		void OnTriggerEnter(Collider col)
 		{
 			if(!col.IsEntity())
@@ -13,6 +14,8 @@ namespace SGJ
 			if(penguinController != null)
 			{
 				Debug.Log("Should destroy penguin");
+				PlayerFeltIntoWaterEvent.Raise(col.gameObject);
+				Destroy(col.gameObject);
 			}
 			else
 			{
