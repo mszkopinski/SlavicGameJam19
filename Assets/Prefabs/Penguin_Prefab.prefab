@@ -264,18 +264,54 @@ MonoBehaviour:
       DecelerationPercentage: 0.1
       SlideForce: 300
       SlideCooldown: 5
+      StepsToCrack: 0
+      IsAffecting: 0
+      ScaleFactor: 1
     - Level: 2
       MaxFatValue: 30
       Mass: 20
       DecelerationPercentage: 0.1
       SlideForce: 500
       SlideCooldown: 5
+      StepsToCrack: 30
+      IsAffecting: 1
+      ScaleFactor: 1.2
     - Level: 3
       MaxFatValue: 90
-      Mass: 20
+      Mass: 50
       DecelerationPercentage: 0.1
       SlideForce: 600
       SlideCooldown: 5
+      StepsToCrack: 25
+      IsAffecting: 1
+      ScaleFactor: 1.5
+    - Level: 4
+      MaxFatValue: 90
+      Mass: 60
+      DecelerationPercentage: 0.1
+      SlideForce: 700
+      SlideCooldown: 5
+      StepsToCrack: 20
+      IsAffecting: 1
+      ScaleFactor: 1.7
+    - Level: 5
+      MaxFatValue: 90
+      Mass: 75
+      DecelerationPercentage: 0.1
+      SlideForce: 800
+      SlideCooldown: 5
+      StepsToCrack: 15
+      IsAffecting: 1
+      ScaleFactor: 2
+    - Level: 6
+      MaxFatValue: 90
+      Mass: 90
+      DecelerationPercentage: 0.1
+      SlideForce: 900
+      SlideCooldown: 5
+      StepsToCrack: 10
+      IsAffecting: 1
+      ScaleFactor: 2.5
   isEditorControllable: 1
   PlayerDataChanged: {fileID: 11400000, guid: 73a6029e3772b4fd3ac060b60cb8905e, type: 2}
   PlayerDestroyed: {fileID: 11400000, guid: a5a78fb68e61349c5bb7d7d81af536c8, type: 2}
@@ -534,11 +570,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6120130915591540607}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
-        type: 3}
-      propertyPath: m_Name
-      value: Pingwin
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -608,6 +639,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9f9cfefc103da4199ba7b0f93ed7b236,
+        type: 3}
+      propertyPath: m_Name
+      value: Pingwin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9cfefc103da4199ba7b0f93ed7b236, type: 3}

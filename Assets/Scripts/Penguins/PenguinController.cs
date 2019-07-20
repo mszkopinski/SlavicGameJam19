@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 using DG.Tweening;
@@ -20,12 +19,19 @@ namespace SGJ
 		[SerializeField] private GameEvent PlayerDataChanged;
 		[SerializeField] private GameEvent PlayerDestroyed;
 
+		public bool IsAffectingCracks
+		{
+			get => CurrentFatMeasure?.IsAffecting ?? false;
+		}
+
+		public int MaxStepsOnCrack
+		{
+			get => CurrentFatMeasure?.StepsToCrack ?? 0;
+		}
+
 		public int CurrentFatLevel
 		{
-			get
-			{
-				return CurrentFatMeasure != null ? CurrentFatMeasure.Level : 0;
-			}
+			get => CurrentFatMeasure?.Level ?? 0;
 		}
 		
 		public int MaxFatLevel
@@ -87,10 +93,13 @@ namespace SGJ
 		Rigidbody rb;
 		Vector2 lastInput;
 		bool isOnCooldown;
+		Vector3 initialScale;
+		CinemachineImpulseSource impulseSource;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
+			impulseSource = GetComponent<CinemachineImpulseSource>();
 			OnSpawned();
 		}
 
@@ -98,6 +107,7 @@ namespace SGJ
 		{
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
+			initialScale = transform.localScale;
 		}
 
 		public void HandleRewiredMovement(Vector2 input)
@@ -148,10 +158,11 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
-			transform.DOScale(CurrentFatLevel > 1 ? CurrentFatLevel * 3 : CurrentFatLevel, 0.3f);
+			rb.constraints = (RigidbodyConstraints)84;
+			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
-			
-			gameObject.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+			rb.constraints = (RigidbodyConstraints)80;
+			impulseSource.GenerateImpulse();
 		}
 
 		protected virtual void OnSpawned()
