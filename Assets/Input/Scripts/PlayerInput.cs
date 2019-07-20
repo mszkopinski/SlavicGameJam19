@@ -5,6 +5,7 @@ using System.Net;
 using UnityEngine;
 using Rewired;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace SGJ
 {
@@ -25,6 +26,28 @@ namespace SGJ
         
         private Player player; 
         private Vector3 movementVector;
+        private Color indicatorColor = new Color(1,1,1, 1);
+        private Image[] indicators;
+
+        private void Awake()
+        {
+            indicators = GetComponentsInChildren<Image>();
+        }
+
+        public Color IndicatorColor
+        {
+            get => indicatorColor;
+            set
+            {
+                indicatorColor = value;
+                foreach (var indicator in indicators)
+                {
+                    Color color = indicatorColor;
+                    color.a = 0.3f;
+                    indicator.color = color;
+                }
+            }
+        }
 
         public int PlayerId
         {
