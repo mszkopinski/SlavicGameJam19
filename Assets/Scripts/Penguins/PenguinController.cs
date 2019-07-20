@@ -100,11 +100,15 @@ namespace SGJ
 		Vector3 initialScale;
 		CinemachineImpulseSource impulseSource;
 		SkinnedMeshRenderer skinnedMeshRenderer;
+		Animator animator;
+		static readonly int velocityAnimId = Animator.StringToHash("velocity");
+		static readonly int slidingAnimId = Animator.StringToHash("isSliding");
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
 			impulseSource = GetComponent<CinemachineImpulseSource>();
+			animator = GetComponentInChildren<Animator>();
 			skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>(true);
 			OnSpawned();
 		}
@@ -121,6 +125,8 @@ namespace SGJ
 		{
 			lastInput = input;
 			
+			animator.SetFloat(velocityAnimId, Mathf.Max(Mathf.Abs(lastInput.y), Mathf.Abs(lastInput.x)));
+			
 			var movementVector = Vector3.one;
 			movementVector.x = lastInput.x * Stats.movementSpeed;
 			movementVector.y = 0;
@@ -135,6 +141,8 @@ namespace SGJ
 			if(isOnCooldown)
 				return;
 			
+			animator.SetBool(slidingAnimId, true);
+			
 			var slideVector = Vector3.zero;
 			slideVector.x = lastInput.normalized.x;
 			slideVector.z = lastInput.normalized.y;
@@ -143,7 +151,14 @@ namespace SGJ
 			
 			rb.AddForce(force, ForceMode.Force);
 
+			StartCoroutine(DoAfter(.5f, () => { animator.SetBool(slidingAnimId, false); }));
 			StartCoroutine(SlideCooldown());
+		}
+
+		IEnumerator DoAfter(float seconds, Action callback)
+		{
+			yield return new WaitForSeconds(seconds);
+			callback?.Invoke();
 		}
 		
 		IEnumerator SlideCooldown()
