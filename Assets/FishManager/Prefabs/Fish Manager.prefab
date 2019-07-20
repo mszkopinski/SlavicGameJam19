@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6392286918976310562
 Transform:
   m_ObjectHideFlags: 0
@@ -43,4 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a144d4a7734412c9696c72c73ae426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Island: {fileID: 0}
+  IslandRoot: {fileID: 0}
+  WorldRoot: {fileID: 0}
+  MinSpawnDelay: 1
+  MaxSpawnDelay: 1.3
+  FishPrefabs:
+  - {fileID: 4552280434372372533, guid: 4a7163b0545294afc8913476198684d3, type: 3}
+  OrcasPrefabs:
+  - {fileID: 4552280434372372533, guid: a1f8aff98c36c4971b769587d08d6bda, type: 3}
+  MinOrcasSpawnDelay: 10
+  MaxOrcasSpawnDelay: 20

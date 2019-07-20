@@ -81,7 +81,7 @@ namespace SGJ
         {
             while (true)
             {
-                yield return new WaitForSeconds(Random.Range(MinSpawnDelay, MaxSpawnDelay));
+                yield return new WaitForSeconds(Random.Range(MinOrcasSpawnDelay, MaxOrcasSpawnDelay));
                 if (OrcasPrefabs.Length > 0)
                 {
                     var orca = Instantiate(OrcasPrefabs[Random.Range(0, OrcasPrefabs.Length)], GetRandomSource(), Quaternion.identity);
