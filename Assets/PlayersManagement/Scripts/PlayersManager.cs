@@ -18,8 +18,6 @@ namespace SGJ
         
         [SerializeField]
         private int maxPlayers = 8;
-        
-        
 
         [SerializeField] private GameObject PlayerPrefab;
 
@@ -33,6 +31,7 @@ namespace SGJ
         private UnityEvent PlayersReady;
 
         [SerializeField] private Transform[] SpawnPoints;
+        [SerializeField] private Color[] PlayerColors;
 
         private void Update()
         {
@@ -79,6 +78,7 @@ namespace SGJ
             rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Ready");
 
             PlayerInput playerInput = Instantiate(PlayerPrefab, SpawnPoints[gamePlayerId].position, Quaternion.identity).GetComponent<PlayerInput>();
+            playerInput.IndicatorColor = PlayerColors[gamePlayerId];
             playerInput.PlayerId = rewiredPlayerId;
         }
         

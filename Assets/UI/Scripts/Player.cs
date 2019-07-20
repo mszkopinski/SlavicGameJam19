@@ -32,6 +32,7 @@ namespace SGJ.UI
         public void RenderData()
         {
             PlayerName.text = $"Player {playerInput.PlayerId}" ;
+            PlayerName.color = playerInput.IndicatorColor;
             
             var sb = new StringBuilder();
             sb.Append($"Fat Level {penguin.CurrentFatLevel.ToString()}/{penguin.MaxFatLevel.ToString()} ");
@@ -46,6 +47,7 @@ namespace SGJ.UI
             {
                 ReadyIndicator.SetActive(true);
                 NotReadyIndicator.SetActive(false);
+                PlayerFatDetails.gameObject.SetActive(true);
             }
         }
 
