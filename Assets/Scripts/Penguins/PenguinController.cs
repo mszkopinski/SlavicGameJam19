@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
 
@@ -158,6 +159,7 @@ namespace SGJ
 			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
 			rb.isKinematic = false;
+			gameObject.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 		}
 
 		protected virtual void OnSpawned()

@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 7577703745145469207}
   - component: {fileID: 1990892776744985366}
   - component: {fileID: 4913625773689092413}
+  - component: {fileID: 4098319731455670817}
   m_Layer: 0
   m_Name: Penguin_Prefab
   m_TagString: Entity
@@ -386,10 +387,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f50cd0eedcf4d7d8ccde786902ba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 3
+  ammo: 0
   ProjectilePrefab: {fileID: 5597390216498376298, guid: dd8748531a5544361b6280a957fd6c02,
     type: 3}
   ShootForce: 2000
+--- !u!114 &4098319731455670817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577703745145469206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 10
+    m_FrequencyGain: 0.1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!1001 &4770603465347656940
 PrefabInstance:
   m_ObjectHideFlags: 0
