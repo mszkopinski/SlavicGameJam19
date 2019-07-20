@@ -157,10 +157,10 @@ namespace SGJ
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
 		{
-			rb.isKinematic = true;
+			rb.constraints = (RigidbodyConstraints)84;
 			transform.DOScale(initialScale * newMeasure?.ScaleFactor ?? initialScale, 0.3f);
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
-			rb.isKinematic = false;
+			rb.constraints = (RigidbodyConstraints)80;
 			impulseSource.GenerateImpulse();
 		}
 
