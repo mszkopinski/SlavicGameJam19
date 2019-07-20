@@ -14,9 +14,9 @@ namespace SGJ
         [SerializeField] private GameObject ProjectilePrefab;
         [SerializeField] private float ShootForce = 2000f;
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
-            if(other.GetComponent(typeof(IThrowable)) is IThrowable throwable)
+            if(other.collider.GetComponent(typeof(IThrowable)) is IThrowable throwable)
             {
                 throwable.OnPicked(out var amount);
                 ammo += amount;

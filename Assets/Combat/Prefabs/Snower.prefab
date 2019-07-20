@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IslandRoot: {fileID: 0}
-  MinSpawnDelay: 0.5
-  MaxSpawnDelay: 1
+  MinSpawnDelay: 3
+  MaxSpawnDelay: 5
   SnowPilePrefabs:
   - {fileID: 2430023513652092455, guid: 3bf068f5e2adf4af1bd6276fb10af18f, type: 3}
