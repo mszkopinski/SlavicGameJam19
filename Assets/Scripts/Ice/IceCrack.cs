@@ -18,7 +18,7 @@ namespace SGJ
 		
 		void OnCollisionEnter(Collision collision)
 		{
-			Debug.Log("COLLISION");
+			
 		}
 
 		void OnTriggerEnter(Collider col)
@@ -45,8 +45,13 @@ namespace SGJ
 			
 			if(stepsDifference == 0)
 			{
-				Destroy(gameObject);
+				Invoke("DestroyCrack", 1f);
 			}
+		}
+
+		void DestroyCrack()
+		{
+			gameObject.AddComponent<Rigidbody>();
 		}
 	}
 }

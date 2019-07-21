@@ -51,5 +51,5 @@ MonoBehaviour:
   - {fileID: 4552280434372372533, guid: 4a7163b0545294afc8913476198684d3, type: 3}
   OrcasPrefabs:
   - {fileID: 4552280434372372533, guid: a1f8aff98c36c4971b769587d08d6bda, type: 3}
-  MinOrcasSpawnDelay: 10
+  MinOrcasSpawnDelay: 15
   MaxOrcasSpawnDelay: 20

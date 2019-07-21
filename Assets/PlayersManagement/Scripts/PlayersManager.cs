@@ -33,14 +33,11 @@ namespace SGJ
         [SerializeField] private Color[] PlayerColors;
 
         private int restartVotes = 0;
+        private List<int> votes = new List<int>();
 
-        public void OnVoteRestartStart()
+        private void Start()
         {
-        }
-
-        public void OnVoteRestartEnd()
-        {
-            
+            restartVotes = 0;
         }
 
         private void Update()
@@ -58,12 +55,12 @@ namespace SGJ
 
                 if (player.GetButtonDown("VoteRestart"))
                 {
-                    OnPlayerRestartVoteStart(null);
+                    OnPlayerRestartVoteStart(player.id);
                 }
 
                 if (player.GetButtonUp("VoteRestart"))
                 {
-                    OnPlayerRestartVoteEnd(null);
+                    OnPlayerRestartVoteEnd(player.id);
                 }
 
                 /*else if (player.GetButtonDown("VoteRestart"))
@@ -134,23 +131,29 @@ namespace SGJ
             }
         }
 
-        public void OnPlayerRestartVoteStart(object value)
+        public void OnPlayerRestartVoteStart(int playerId)
         {
-            restartVotes++;
+            if (!votes.Contains(playerId))
+            {
+                votes.Add(playerId);
+            }
 
-            if (restartVotes == playersReady.Count)
+            Debug.Log("On player restart vote start");
+            Debug.Log("restart votes " + votes.Count);
+            Debug.Log("Players total " + playersReady.Count);
+            
+            if (votes.Count == playersReady.Count)
             {
                 Scene scene = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(scene.name);
             }
         }
 
-        public void OnPlayerRestartVoteEnd(object value)
+        public void OnPlayerRestartVoteEnd(int playerId)
         {
-            restartVotes--;
-            if (restartVotes < 0)
+            if (votes.Contains(playerId))
             {
-                restartVotes = 0;
+                votes.Remove(playerId);
             }
         }
 

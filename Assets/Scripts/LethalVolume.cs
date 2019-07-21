@@ -13,14 +13,12 @@ namespace SGJ
 			var penguinController = col.GetComponent<PenguinController>();
 			if(penguinController != null)
 			{
-				Debug.Log("Should destroy penguin");
 				PlayerFeltIntoWaterEvent.Raise(col.gameObject);
 				Destroy(col.gameObject);
 			}
 			else
 			{
 				Destroy(col.gameObject);
-				Debug.Log("Should destroy fish");
 			}
 		}
 	}

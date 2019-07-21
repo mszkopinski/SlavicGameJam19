@@ -4,6 +4,7 @@ using System.Linq;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SGJ
 {
@@ -12,7 +13,9 @@ namespace SGJ
 		public static event Action<PenguinController> Spawned;
 
 		public event Action<int> FatLevelChanged;
-		public event Action<float> FatValueChanged; 
+		public event Action<float> FatValueChanged;
+
+		[SerializeField] private AudioSource audioSource;
 		
 		[SerializeField]
 		PenguinStats Stats;
@@ -21,6 +24,11 @@ namespace SGJ
 
 		[SerializeField] private GameEvent PlayerDataChanged;
 		[SerializeField] private GameEvent PlayerDestroyed;
+
+		[SerializeField] private AudioClip[] EatSounds;
+		[SerializeField] private AudioClip[] FatChangeSounds;
+
+		private bool isGrounded = true;
 
 		public bool IsAffectingCracks
 		{
@@ -97,7 +105,7 @@ namespace SGJ
 		Rigidbody rb;
 		Vector2 lastInput;
 		bool isOnCooldown;
-		Vector3 initialScale;
+		Vector3 initialScale = Vector3.one;
 		CinemachineImpulseSource impulseSource;
 		SkinnedMeshRenderer skinnedMeshRenderer;
 		Animator animator;
@@ -118,7 +126,6 @@ namespace SGJ
 			CurrentFatMeasure = Stats.fatMeasures.FirstOrDefault();
 			CurrentFatValue = 0f;
 			FatValueChanged?.Invoke(CurrentFatValue);
-			initialScale = transform.localScale;
 		}
 
 		public void HandleRewiredMovement(Vector2 input)
@@ -155,6 +162,15 @@ namespace SGJ
 			StartCoroutine(SlideCooldown());
 		}
 
+		public void HandleJump()
+		{
+			if (isGrounded)
+			{
+				isGrounded = false;
+				rb.AddForce(Vector3.up * rb.mass * 5f, ForceMode.Impulse);	
+			}
+		}
+
 		IEnumerator DoAfter(float seconds, Action callback)
 		{
 			yield return new WaitForSeconds(seconds);
@@ -174,8 +190,11 @@ namespace SGJ
 			{
 				edible.OnEaten(out var productFatValue);
 				CurrentFatValue += productFatValue;
+				audioSource.PlayOneShot(EatSounds[Random.Range(0, EatSounds.Length)]);
 				PlayerDataChanged.Raise(gameObject);
 			}
+
+			isGrounded = true;
 		}
 
 		protected virtual void OnFatMeasureChanged(FatMeasure newMeasure)
@@ -184,12 +203,26 @@ namespace SGJ
 				return;
 			
 			rb.constraints = (RigidbodyConstraints)84;
-			transform.DOScale(initialScale * newMeasure.ScaleFactor, 0.3f);
+			Tweener tweener = transform.DOScale(initialScale * newMeasure.ScaleFactor, 0.7f);
+			
 			transform.DOShakeScale(0.5f, 2f, 10, 0);
+			
 			rb.constraints = (RigidbodyConstraints)80;
 			impulseSource.GenerateImpulse();
+			audioSource.PlayOneShot(FatChangeSounds[Random.Range(0, FatChangeSounds.Length)]);
 			
 			FatLevelChanged?.Invoke(newMeasure.Level);
+		}
+
+		public void OnPlayerWin(object value)
+		{
+			GameObject player = (GameObject) value;
+			if (player.Equals(gameObject))
+			{
+				rb.constraints = RigidbodyConstraints.FreezeAll;
+				GetComponentInChildren<Animator>().SetTrigger("IsWinner");
+				GetComponent<PlayerInput>().enabled = false;
+			}
 		}
 
 		protected virtual void OnSpawned()

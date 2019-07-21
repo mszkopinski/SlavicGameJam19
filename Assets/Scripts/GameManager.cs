@@ -6,6 +6,7 @@ namespace SGJ
 	public class GameManager : MonoSingleton<GameManager>
 	{
 		[SerializeField] private GameEvent MatchStartedEvent;
+		[SerializeField] private GameEvent PlayerWinEvent;
 		private List<GameObject> players = new List<GameObject>();
 
 		void Start()
@@ -15,7 +16,6 @@ namespace SGJ
 
 		public void OnPlayerReady(object value)
 		{
-			Debug.Log("On player ready ");
 			GameObject player = (GameObject) value;
 			if (!players.Contains(player))
 			{
@@ -25,8 +25,6 @@ namespace SGJ
 
 		public void OnPlayerDestroyed(object value)
 		{
-			Debug.Log("On player destroyed ");
-			
 			GameObject player = (GameObject) value;
 			if (players.Contains(player))
 			{
@@ -35,7 +33,8 @@ namespace SGJ
 
 			if (players.Count == 1)
 			{
-				Debug.Log($"Player { player.GetComponent<PlayerInput>().PlayerId} Wins");
+				Debug.Log("Player win!" );
+				PlayerWinEvent.Raise(players[0]);
 			}
 		}
 	}

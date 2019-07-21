@@ -23,6 +23,7 @@ namespace SGJ
         [SerializeField] private UnityEvent Slide;
         [SerializeField] private UnityEvent Fire;
         [SerializeField] private UnityEvent Slap;
+        [SerializeField] private UnityEvent Jump;
 
         [SerializeField] private GameEvent PlayerJoinedEvent; 
         [SerializeField] private GameEvent PlayerReadyEvent;
@@ -64,6 +65,7 @@ namespace SGJ
                 player.AddInputEventDelegate(OnFireButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Fire");
                 player.AddInputEventDelegate(OnSlideButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slide");
                 player.AddInputEventDelegate(OnSlapButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Slap");
+                player.AddInputEventDelegate(OnJumpButtonDown, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Jump");
                 player.AddInputEventDelegate(OnPlayerVoteRestartStart, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "VoteRestart");
                 player.AddInputEventDelegate(OnPlayerVoteRestartEnd, UpdateLoopType.Update, InputActionEventType.ButtonJustReleased, "VoteRestart");
                 
@@ -109,6 +111,11 @@ namespace SGJ
             Slap.Invoke();
         }
 
+        private void OnJumpButtonDown(InputActionEventData data)
+        {
+            Jump.Invoke();
+        }
+
         private void OnReadyButtonDown(InputActionEventData data)
         {
             player.controllers.maps.SetMapsEnabled(false, "Ready");
@@ -132,6 +139,7 @@ namespace SGJ
             player.RemoveInputEventDelegate(OnReadyButtonDown);
             player.RemoveInputEventDelegate(OnPlayerVoteRestartStart);
             player.RemoveInputEventDelegate(OnPlayerVoteRestartEnd);
+            player.RemoveInputEventDelegate(OnJumpButtonDown);
         }
     }
 }
