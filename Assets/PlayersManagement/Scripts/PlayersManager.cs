@@ -95,7 +95,7 @@ namespace SGJ
             rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Ready");
 
             PlayerInput playerInput = Instantiate(PlayerPrefab, SpawnPoints[gamePlayerId].position, Quaternion.identity).GetComponent<PlayerInput>();
-            playerInput.IndicatorColor = PlayerColors[gamePlayerId];
+            playerInput.IndicatorColor = PlayerColors[rewiredPlayerId];
             playerInput.PlayerId = rewiredPlayerId;
         }
         
@@ -138,10 +138,6 @@ namespace SGJ
                 votes.Add(playerId);
             }
 
-            Debug.Log("On player restart vote start");
-            Debug.Log("restart votes " + votes.Count);
-            Debug.Log("Players total " + playersReady.Count);
-            
             if (votes.Count == playersReady.Count)
             {
                 Scene scene = SceneManager.GetActiveScene();
